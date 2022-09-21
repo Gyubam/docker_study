@@ -1,3 +1,5 @@
+# Nodejs 기본 도커 setting
+
 FROM node:12
 
 WORKDIR /app
