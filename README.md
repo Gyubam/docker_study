@@ -93,3 +93,16 @@ running or stopped container)
 
 <br>
 
+## Networks
+
+- docker network create SOME_NAME
+
+<br>
+
+- docker run -network my-network --name cont1 my-image
+
+<br>
+
+- docker run -network my-network --name cont2 my-other-image
+
+
