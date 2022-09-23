@@ -53,3 +53,43 @@ tag must include the repository name/ url
 
 - docker pull IMAGE : Pull (download) an image from DockerHub (or another registry) - this
 is done automatically if you just docker run IMAGE and the image wasn't pulled before
+
+<br>
+
+## Data & Volumes
+- docker run -v /path/in/container IMAGE : Create an Anonymous Volume inside a
+Container
+
+<br>
+
+- docker run -v some-name:/path/in/container IMAGE : Create a Named Volume (named
+some-name ) inside a Container
+
+<br>
+
+- docker run -v /path/on/your/host/machine:path/in/container IMAGE : Create a Bind
+Mount and connect a local path on your host machine to some path in the Container
+
+
+<br>
+
+- docker volume ls : List all currently active / stored Volumes (by all Containers)
+
+
+<br>
+
+- docker volume create VOL_NAME : Create a new (Named) Volume named VOL_NAME . You
+typically don't need to do that, since Docker creates them automatically for you if they don't
+exist when running a container
+
+<br>
+
+- docker volume rm VOL_NAME : Remove a Volume by it's name (or ID)
+
+<br>
+
+- docker volume prune : Remove all unused Volumes (i.e. not connected to a currently
+running or stopped container)
+
+<br>
+
