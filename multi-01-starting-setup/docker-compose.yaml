@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: max
+      MONGO_INITDB_ROOT_PASSWORD: secret
+  backend:
+    image: 'goals-node'
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    container_name: backend
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: max
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    depends_on:
+      - 'mongodb'
+  frontend:
+    container_name: frontend
+    image: 'goals-react'
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+volumes:
+  data:
+  logs:
+
