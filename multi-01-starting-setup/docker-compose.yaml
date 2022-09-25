@@ -6,8 +6,10 @@ services:
       - data:/data/db
     container_name: mongodb
     environment:
+      MONGO_INITDB_DATABASE: my_db
       MONGO_INITDB_ROOT_USERNAME: max
       MONGO_INITDB_ROOT_PASSWORD: secret
+
   backend:
     image: 'goals-node'
     ports:
@@ -22,6 +24,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: secret
     depends_on:
       - 'mongodb'
+      
   frontend:
     container_name: frontend
     image: 'goals-react'
